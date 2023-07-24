@@ -3,7 +3,7 @@
 Team:
 
 * Munti Kehase - service microservice?
-* Person 2 - Which microservice?
+* Ian Belicina - Sales microservice
 
 ## Design
 
