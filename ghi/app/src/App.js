@@ -5,6 +5,7 @@ import SalesPeopleList from './SalesPeopleList';
 import { useEffect, useState } from 'react';
 import SalesPersonForm from './SalesPersonForm';
 import CustomersList from './ListCustomers';
+import CustomerForm from './CustomerForm';
 
 function App() {
 
@@ -62,6 +63,8 @@ function App() {
           <Route path="salesPeople" element={<SalesPeopleList salesPeople={salesPeople}/>}/>
           <Route path="salesPersonForm" element={<SalesPersonForm getSalesPeople={getSalesPeople}/>}/>
           <Route path="customers" element={<CustomersList customers={customers}/>}/>
+          <Route path="customerForm" element={<CustomerForm getCustomers={getCustomers}/>}/>
+
         </Routes>
       </div>
     </BrowserRouter>

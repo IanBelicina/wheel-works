@@ -5,7 +5,7 @@ function SalesPeopleList({salesPeople}){
     return(
 
 
-        <table className="table table-striped">
+    <table className="table table-striped">
       <thead>
         <tr>
           <th>Employee ID</th>
