@@ -20,6 +20,9 @@ class AppointmentListEncoder(ModelEncoder):
     encoders = {
         "technician": TechnicianListEncoder()
         }
+class AutomobileVO(ModelEncoder):
+    model = AutomobileVO
+    properties = ["vin", "sold"]
 
 
 @require_http_methods(["GET", "POST"])
@@ -85,7 +88,6 @@ def api_show_appointment(request,pk):
 
 
 
-
 @require_http_methods(["PUT"])
 def api_cancel_appointment(request, pk):
     try:
@@ -95,8 +97,6 @@ def api_cancel_appointment(request, pk):
         return JsonResponse({"message": "Appointment Canceled"})
     except Appointment.DoesNotExist:
         return JsonResponse({"Error": "Appointment Not Exist"}, status=404)
-
-
 
 
 @require_http_methods(["PUT"])
