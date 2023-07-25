@@ -4,10 +4,12 @@ import Nav from './Nav';
 import SalesPeopleList from './SalesPeopleList';
 import { useEffect, useState } from 'react';
 import SalesPersonForm from './SalesPersonForm';
+import CustomersList from './ListCustomers';
 
 function App() {
 
   const [ salesPeople, setSalesPeople ] = useState([]);
+  const [ customers, setCustomers ] = useState([]);
 
   async function getSalesPeople(){
     const response = await fetch("http://localhost:8090/api/salespeople/");
@@ -24,11 +26,29 @@ function App() {
     }
   }
 
+  async function getCustomers(){
+    const response = await fetch("http://localhost:8090/api/customers/");
+    if (response.ok){
+      const data = await response.json();
+      // console.log(data);
+      setCustomers(data.customer);
+      // console.log(customers, "this is customers");
+    }
+    else{
+      console.log("An error occurred fetching customers");
+    }
+  }
+
   useEffect(() => {
     getSalesPeople();
+    getCustomers();
   },[]);
 
   if (salesPeople === undefined){
+    return null;
+  }
+
+  if (customers === undefined){
     return null;
   }
 
@@ -41,6 +61,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="salesPeople" element={<SalesPeopleList salesPeople={salesPeople}/>}/>
           <Route path="salesPersonForm" element={<SalesPersonForm getSalesPeople={getSalesPeople}/>}/>
+          <Route path="customers" element={<CustomersList customers={customers}/>}/>
         </Routes>
       </div>
     </BrowserRouter>
