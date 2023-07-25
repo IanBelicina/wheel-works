@@ -11,7 +11,7 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    phone_numer = models.CharField(max_length=200, unique=True)
+    phone_number = models.CharField(max_length=200, unique=True)
 
 class AutomobileVO(models.Model):
     import_href = models.CharField(max_length=200,unique=True)
