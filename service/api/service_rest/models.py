@@ -19,4 +19,4 @@ class Appointment(models.Model):
     status = models.CharField(max_length=200)
     vin = models.CharField(max_length=17, unique=True)
     customer = models.CharField(max_length=200)
-    technician= models.ForeignKey(Technician, related_name="appointments", on_delete=models.CASCADE)
+    technician = models.ForeignKey(Technician, related_name="appointments", on_delete=models.CASCADE)
