@@ -3,6 +3,7 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import SalesPeopleList from './SalesPeopleList';
 import { useEffect, useState } from 'react';
+import SalesPersonForm from './SalesPersonForm';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="salesPeople" element={<SalesPeopleList salesPeople={salesPeople}/>}/>
+          <Route path="salesPersonForm" element={<SalesPersonForm getSalesPeople={getSalesPeople}/>}/>
         </Routes>
       </div>
     </BrowserRouter>
