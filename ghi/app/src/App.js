@@ -10,7 +10,8 @@ import SalesList from './SalesList';
 import SaleForm from './SaleForm';
 import ListManufacturers from './ListManufacturers';
 import ManufacturerForm from './ManufacturerForm';
-
+import ListVehicleModels from './ListVehicleModels';
+import VehicleModelForm from './VehicleModelForm';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
   const [ sales, setSales ] = useState([]);
   const [ automobileVOs, setAutomobileVO ] = useState([]);
   const [ manufacturers, setManufacturers] = useState([]);
+  const [ models, setModels ] = useState([]);
 
   async function getSalesPeople(){
     const response = await fetch("http://localhost:8090/api/salespeople/");
@@ -90,6 +92,20 @@ function App() {
 
   }
 
+  async function getModels(){
+    const response = await fetch("http://localhost:8100/api/models/");
+    if (response.ok){
+      const data = await response.json();
+      // console.log(data,"this is data");
+      // console.log(data.models, "this is data.models");
+      setModels(data.models);
+
+    }
+    else{
+      console.log("An error occurred fetching automobilevos");
+    }
+  }
+
 
 
   useEffect(() => {
@@ -98,6 +114,7 @@ function App() {
     getSales();
     getAutomobileVO();
     getManufacturers();
+    getModels();
   },[]);
 
   if (salesPeople === undefined){
@@ -108,7 +125,19 @@ function App() {
     return null;
   }
 
+  if (sales === undefined){
+    return null;
+  }
+
   if (automobileVOs === undefined){
+    return null;
+  }
+
+  if (manufacturers === undefined){
+    return null;
+  }
+
+  if (models === undefined){
     return null;
   }
 
@@ -127,6 +156,8 @@ function App() {
           <Route path="saleForm" element={<SaleForm salesPeople={salesPeople} getSales={getSales} automobileVOs={automobileVOs} sales={sales} customers={customers}/>}/>
           <Route path="manufacturers" element={<ListManufacturers manufacturers={manufacturers}/>}/>
           <Route path="manufacturerForm" element={<ManufacturerForm getManufacturers={getManufacturers}/>}/>
+          <Route path="models" element={<ListVehicleModels models={models}/>}/>
+          <Route path="modelForm" element={<VehicleModelForm getModels={getModels} manufacturers={manufacturers}/>}/>
         </Routes>
       </div>
     </BrowserRouter>
