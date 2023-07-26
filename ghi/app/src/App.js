@@ -103,7 +103,7 @@ function App() {
           <Route path="salesPersonForm" element={<SalesPersonForm getSalesPeople={getSalesPeople}/>}/>
           <Route path="customers" element={<CustomersList customers={customers}/>}/>
           <Route path="customerForm" element={<CustomerForm getCustomers={getCustomers}/>}/>
-          <Route path="sales" element={<SalesList sales={sales}/>}/>
+          <Route path="sales" element={<SalesList sales={sales} salesPeople={salesPeople}/>}/>
           <Route path="saleForm" element={<SaleForm salesPeople={salesPeople} getSales={getSales} automobileVOs={automobileVOs} sales={sales} customers={customers}/>}/>
         </Routes>
       </div>

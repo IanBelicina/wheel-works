@@ -4,7 +4,8 @@ function SalesPeopleList({salesPeople}){
 
     return(
 
-
+    <>
+    <h1>Sales People</h1>
     <table className="table table-striped">
       <thead>
         <tr>
@@ -25,7 +26,7 @@ function SalesPeopleList({salesPeople}){
         })}
       </tbody>
     </table>
-
+    </>
     );
 }
 

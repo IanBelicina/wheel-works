@@ -1,7 +1,9 @@
 function CustomersList({ customers }){
     // console.log(customers);
     return(
-        // <p>this is a customers list</p>
+
+    <>
+    <h1>Customers</h1>
     <table className="table table-striped">
       <thead>
         <tr>
@@ -24,6 +26,10 @@ function CustomersList({ customers }){
         })}
       </tbody>
     </table>
+    </>
+
+
+
     );
 }
 

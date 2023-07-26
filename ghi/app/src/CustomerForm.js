@@ -67,7 +67,7 @@ function CustomerForm({ getCustomers }){
           <div className="card shadow">
             <div className="card-body">
               <form onSubmit={handSubmit} id="create-customer-form">
-                <h1 className="card-title">Add a sales customer!</h1>
+                <h1 className="card-title">Add a customer!</h1>
                   <div className="col">
                     <div className="form-floating mb-3">
                       <input value={firstName} onChange={handleFirstNameChange} required placeholder="First Name" type="text" id="First Name" name="First Name" className="form-control" />
