@@ -13,6 +13,7 @@ import ManufacturerForm from './ManufacturerForm';
 import ListVehicleModels from './ListVehicleModels';
 import VehicleModelForm from './VehicleModelForm';
 import ListAutomobiles from './ListAutoMobiles';
+import AutomobileForm from './AutomobileForm';
 
 function App() {
 
@@ -176,6 +177,7 @@ function App() {
           <Route path="models" element={<ListVehicleModels models={models}/>}/>
           <Route path="modelForm" element={<VehicleModelForm getModels={getModels} manufacturers={manufacturers}/>}/>
           <Route path="automobiles" element={<ListAutomobiles automobiles={automobiles} sales={sales}/>}/>
+          <Route path="automobileForm" element={<AutomobileForm getAutomobiles={getAutomobiles} models={models}/>}/>
         </Routes>
       </div>
     </BrowserRouter>

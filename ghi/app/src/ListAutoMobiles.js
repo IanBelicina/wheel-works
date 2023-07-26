@@ -3,7 +3,7 @@ function ListAutomobiles({automobiles, sales}){
     const getSoldStatuses = (automobiles, sales) =>{
         const updateAutomobiles = automobiles.map(automobile => {
             const soldStatus = sales.some(sale => sale.auto_mobile.vin === automobile.vin);
-            return {...automobile, sold:true}
+            return {...automobile, sold:soldStatus}
         });
         return updateAutomobiles;
     }
