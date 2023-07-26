@@ -8,6 +8,9 @@ import CustomersList from './ListCustomers';
 import CustomerForm from './CustomerForm';
 import SalesList from './SalesList';
 import SaleForm from './SaleForm';
+import ListManufacturers from './ListManufacturers';
+import ManufacturerForm from './ManufacturerForm';
+
 
 function App() {
 
@@ -15,6 +18,7 @@ function App() {
   const [ customers, setCustomers ] = useState([]);
   const [ sales, setSales ] = useState([]);
   const [ automobileVOs, setAutomobileVO ] = useState([]);
+  const [ manufacturers, setManufacturers] = useState([]);
 
   async function getSalesPeople(){
     const response = await fetch("http://localhost:8090/api/salespeople/");
@@ -71,6 +75,21 @@ function App() {
     }
   }
 
+  async function getManufacturers(){
+    const response = await fetch("http://localhost:8100/api/manufacturers/");
+    if (response.ok){
+      const data = await response.json();
+      // console.log(data,"this is data");
+      // console.log(data.manufacturers, "this is data.manufacturers");
+      setManufacturers(data.manufacturers);
+
+    }
+    else{
+      console.log("An error occurred fetching automobilevos");
+    }
+
+  }
+
 
 
   useEffect(() => {
@@ -78,6 +97,7 @@ function App() {
     getCustomers();
     getSales();
     getAutomobileVO();
+    getManufacturers();
   },[]);
 
   if (salesPeople === undefined){
@@ -105,6 +125,8 @@ function App() {
           <Route path="customerForm" element={<CustomerForm getCustomers={getCustomers}/>}/>
           <Route path="sales" element={<SalesList sales={sales} salesPeople={salesPeople}/>}/>
           <Route path="saleForm" element={<SaleForm salesPeople={salesPeople} getSales={getSales} automobileVOs={automobileVOs} sales={sales} customers={customers}/>}/>
+          <Route path="manufacturers" element={<ListManufacturers manufacturers={manufacturers}/>}/>
+          <Route path="manufacturerForm" element={<ManufacturerForm getManufacturers={getManufacturers}/>}/>
         </Routes>
       </div>
     </BrowserRouter>
