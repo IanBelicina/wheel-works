@@ -12,6 +12,7 @@ import ListManufacturers from './ListManufacturers';
 import ManufacturerForm from './ManufacturerForm';
 import ListVehicleModels from './ListVehicleModels';
 import VehicleModelForm from './VehicleModelForm';
+import ListAutomobiles from './ListAutoMobiles';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
   const [ automobileVOs, setAutomobileVO ] = useState([]);
   const [ manufacturers, setManufacturers] = useState([]);
   const [ models, setModels ] = useState([]);
+  const [ automobiles, setAutomobiles ] = useState([]);
 
   async function getSalesPeople(){
     const response = await fetch("http://localhost:8090/api/salespeople/");
@@ -106,6 +108,16 @@ function App() {
     }
   }
 
+  async function getAutomobiles(){
+    const response = await fetch("	http://localhost:8100/api/automobiles/");
+    if (response.ok){
+      const data = await response.json();
+      // console.log(data, "this is data");
+      // console.log(data.autos, "this is data.autos");
+      setAutomobiles(data.autos);
+    }
+  }
+
 
 
   useEffect(() => {
@@ -115,6 +127,7 @@ function App() {
     getAutomobileVO();
     getManufacturers();
     getModels();
+    getAutomobiles();
   },[]);
 
   if (salesPeople === undefined){
@@ -141,6 +154,10 @@ function App() {
     return null;
   }
 
+  if (automobiles === undefined){
+    return null;
+  }
+
 
   return (
     <BrowserRouter>
@@ -158,6 +175,7 @@ function App() {
           <Route path="manufacturerForm" element={<ManufacturerForm getManufacturers={getManufacturers}/>}/>
           <Route path="models" element={<ListVehicleModels models={models}/>}/>
           <Route path="modelForm" element={<VehicleModelForm getModels={getModels} manufacturers={manufacturers}/>}/>
+          <Route path="automobiles" element={<ListAutomobiles automobiles={automobiles} sales={sales}/>}/>
         </Routes>
       </div>
     </BrowserRouter>
