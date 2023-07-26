@@ -22,9 +22,9 @@ def auth_polling_status():
 
     for auto_data in content["autos"]:
 # update automobile status  if it exist using the vin, else create if it does not exist
-        AutomobileVO.update_or_create(
+        AutomobileVO.objects.update_or_create(
            vin =  auto_data["vin"],
-           default = {
+           defaults = {
                "sold": auto_data["sold"]
            }
         )
