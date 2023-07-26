@@ -10,16 +10,13 @@ function ListAutomobiles({automobiles, sales}){
 
 
     const updatedAutomobiles = getSoldStatuses(automobiles,sales);
-    // console.log(updatedAutomobiles);
 
-    // console.log(automobiles, "this is automobiles");
-    // console.log(sales, "this is sales");
 
 
 
 
     return(
-        // <p>this is a list of automobiles</p>
+
         <>
     <h1>Automobiles</h1>
     <table className="table table-striped">

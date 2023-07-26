@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function VehicleModelForm({ getModels, manufacturers}){
-    // console.log(manufacturers, "these are manufacturers");
+
 
     const [ modelName, setModelName ] = useState('');
     const [ pictureUrl, setPictureUrl ] = useState('');
@@ -55,7 +55,7 @@ function VehicleModelForm({ getModels, manufacturers}){
     }
 
     return(
-        // <p>this is a model form</p>
+
     <div className="my-5 container">
       <div className="row">
         <div className="col">

@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 function SaleForm({automobileVOs, sales, getSales, customers,salesPeople}){
 
-    // console.log(automobileVOs, "automobileVOs");
-    // console.log(sales, "sales");
-    // console.log(salesPeople);
-    // console.log(customers);
+
 
     const unsoldAutomobiles = automobileVOs.filter((automobile) => {
         return !sales.some((sale) => sale.auto_mobile.vin === automobile.vin);
       });
-    // console.log(unsoldAutomobiles, "these are unsold automobiles");
+
 
     const [ automobileVo, setAutomobileVo] = useState('');
     const [ salesPerson, setSalesPerson] = useState('');
@@ -26,7 +23,7 @@ function SaleForm({automobileVOs, sales, getSales, customers,salesPeople}){
         data.customer = customer;
         data.price = price;
 
-        // console.log(data, "this is data obj");
+
         const url = 'http://localhost:8090/api/sales/';
         const fetchConfig = {
             method:"post",
@@ -38,7 +35,7 @@ function SaleForm({automobileVOs, sales, getSales, customers,salesPeople}){
         const response = await fetch(url, fetchConfig);
         if (response.ok){
             const newSale = await response.json();
-            // console.log(newSale);
+
 
             setAutomobileVo('');
             setSalesPerson('');
@@ -74,7 +71,7 @@ function SaleForm({automobileVOs, sales, getSales, customers,salesPeople}){
 
 
     return(
-        // <p>this is a sale form</p>
+
     <div className="my-5 container">
         <div className="row">
 

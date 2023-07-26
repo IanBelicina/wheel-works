@@ -60,7 +60,7 @@ function AutomobileForm({ models, getAutomobiles }){
 
 
     return(
-        // <p>this is an automobile form</p>
+
     <div className="my-5 container">
       <div className="row">
         <div className="col">

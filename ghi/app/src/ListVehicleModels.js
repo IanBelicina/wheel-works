@@ -1,7 +1,7 @@
 function ListVehicleModels({ models }){
-    // console.log(models, "this is models")
+
     return(
-        // <p>This is as list of vehicles</p>
+
         <>
         <h1>Vehicle Models</h1>
         <table className="table table-striped">

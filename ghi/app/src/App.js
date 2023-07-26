@@ -29,11 +29,7 @@ function App() {
     const response = await fetch("http://localhost:8090/api/salespeople/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data, "This is data")
-      // console.log(data.sales_person, "this is data.sales_person")
       setSalesPeople(data.sales_person);
-      // console.log(salesPeople, "this is sales people set in app.js")
-
     }
     else{
       console.log("An error occurred fetching sales peoepl");
@@ -44,9 +40,9 @@ function App() {
     const response = await fetch("http://localhost:8090/api/customers/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data);
+
       setCustomers(data.customer);
-      // console.log(customers, "this is customers");
+
     }
     else{
       console.log("An error occurred fetching customers");
@@ -57,10 +53,9 @@ function App() {
     const response = await fetch("http://localhost:8090/api/sales/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data,"this is data");
-      // console.log(data.sales, "this is data.sales");
+
       setSales(data.sales);
-      // console.log(sales, "this is sales");
+
     }
     else{
       console.log("An error occurred fetching sales");
@@ -71,8 +66,7 @@ function App() {
     const response = await fetch("http://localhost:8090/api/automobiles/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data,"this is data");
-      // console.log(data.auto_mobile, "this is data.automobile");
+
       setAutomobileVO(data.auto_mobile);
     }
     else{
@@ -84,8 +78,7 @@ function App() {
     const response = await fetch("http://localhost:8100/api/manufacturers/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data,"this is data");
-      // console.log(data.manufacturers, "this is data.manufacturers");
+
       setManufacturers(data.manufacturers);
 
     }
@@ -99,8 +92,7 @@ function App() {
     const response = await fetch("http://localhost:8100/api/models/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data,"this is data");
-      // console.log(data.models, "this is data.models");
+
       setModels(data.models);
 
     }
@@ -113,8 +105,7 @@ function App() {
     const response = await fetch("	http://localhost:8100/api/automobiles/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data, "this is data");
-      // console.log(data.autos, "this is data.autos");
+
       setAutomobiles(data.autos);
     }
   }

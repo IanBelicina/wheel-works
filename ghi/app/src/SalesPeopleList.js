@@ -1,5 +1,5 @@
 function SalesPeopleList({salesPeople}){
-    // console.log(salesPeople, "in salespeoplelist function");
+
 
 
     return(

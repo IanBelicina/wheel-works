@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 
 function SalesList({ sales, salesPeople }){
-    // console.log(sales, "this is sales")
+
 
     const [ salesPerson, setSalesPerson ] = useState('');
     function handleSalesPersonChange(event){
@@ -10,8 +10,7 @@ function SalesList({ sales, salesPeople }){
         setSalesPerson(value);
     }
 
-    // console.log(salesPerson);
-    // console.log(sales)
+
     let salesPersonSales = [];
     if (salesPerson){
         salesPersonSales = sales.filter(sale => sale.sales_person.id == salesPerson);
@@ -19,7 +18,7 @@ function SalesList({ sales, salesPeople }){
     else{
         salesPersonSales = sales;
     }
-    // console.log(salesPersonSales);
+
 
 
     return(
