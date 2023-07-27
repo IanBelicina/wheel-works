@@ -265,7 +265,7 @@ Action | Method | URL
 | ------ | ------ | ------ |
 List Sales | GET | http://localhost:8090/api/sales/
 Create Sale | POST | http://localhost:8090/api/sales/
-Delete Specific Customer | DELETE | http://localhost:8090/api/sales/15
+Delete Specific Customer | DELETE | http://localhost:8090/api/sales/<int:id>
 
 # List Sales example:
 
