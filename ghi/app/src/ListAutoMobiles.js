@@ -1,17 +1,10 @@
 function ListAutomobiles({automobiles, sales}){
 
-    const getSoldStatuses = (automobiles, sales) =>{
-        const updateAutomobiles = automobiles.map(automobile => {
-            const soldStatus = sales.some(sale => sale.auto_mobile.vin === automobile.vin);
-            return {...automobile, sold:soldStatus}
-        });
-        return updateAutomobiles;
-    }
 
-
-    const updatedAutomobiles = getSoldStatuses(automobiles,sales);
-
-
+      const updateAutomobiles = automobiles.map(automobile => {
+          const soldStatus = sales.some(sale => sale.auto_mobile.vin === automobile.vin);
+          return {...automobile, sold:soldStatus}
+      });
 
 
 
@@ -31,7 +24,7 @@ function ListAutomobiles({automobiles, sales}){
         </tr>
       </thead>
       <tbody>
-        {updatedAutomobiles.map(automobile => {
+        {updateAutomobiles.map(automobile => {
           return (
             <tr key={automobile.id}>
               <td>{ automobile.vin }</td>
