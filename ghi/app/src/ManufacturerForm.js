@@ -35,7 +35,7 @@ function ManufacturerForm({ getManufacturers }){
     }
 
     return(
-        // <p> this is a manufacturer form</p>
+
     <div className="my-5 container">
       <div className="row">
         <div className="col">

@@ -28,7 +28,7 @@ function SalesPersonForm({ getSalesPeople }){
         const response = await fetch(url, fetchConfig);
         if (response.ok){
             const newSalesPerson = await response.json();
-            // console.log(newSalesPerson);
+
             setFirstName('');
             setLastName('');
             setEmployeeId('');

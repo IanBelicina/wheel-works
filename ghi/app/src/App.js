@@ -16,23 +16,26 @@ import AppointmentForm from './react_services/AppointmentForm';
 import AppointmentList from './react_services/AppointmentList';
 import ServiceHistoryList from './react_services/ServiceHistoryList'
 
-function App( ) {
+import ListVehicleModels from './ListVehicleModels';
+import VehicleModelForm from './VehicleModelForm';
+import ListAutomobiles from './ListAutoMobiles';
+import AutomobileForm from './AutomobileForm';
+
+function App() {
 
   const [ salesPeople, setSalesPeople ] = useState([]);
   const [ customers, setCustomers ] = useState([]);
   const [ sales, setSales ] = useState([]);
   const [ automobileVOs, setAutomobileVO ] = useState([]);
   const [ manufacturers, setManufacturers] = useState([]);
+  const [ models, setModels ] = useState([]);
+  const [ automobiles, setAutomobiles ] = useState([]);
 
   async function getSalesPeople(){
     const response = await fetch("http://localhost:8090/api/salespeople/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data, "This is data")
-      // console.log(data.sales_person, "this is data.sales_person")
       setSalesPeople(data.sales_person);
-      // console.log(salesPeople, "this is sales people set in app.js")
-
     }
     else{
       console.log("An error occurred fetching sales peoepl");
@@ -43,9 +46,9 @@ function App( ) {
     const response = await fetch("http://localhost:8090/api/customers/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data);
+
       setCustomers(data.customer);
-      // console.log(customers, "this is customers");
+
     }
     else{
       console.log("An error occurred fetching customers");
@@ -56,10 +59,9 @@ function App( ) {
     const response = await fetch("http://localhost:8090/api/sales/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data,"this is data");
-      // console.log(data.sales, "this is data.sales");
+
       setSales(data.sales);
-      // console.log(sales, "this is sales");
+
     }
     else{
       console.log("An error occurred fetching sales");
@@ -70,8 +72,7 @@ function App( ) {
     const response = await fetch("http://localhost:8090/api/automobiles/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data,"this is data");
-      // console.log(data.auto_mobile, "this is data.automobile");
+
       setAutomobileVO(data.auto_mobile);
     }
     else{
@@ -83,8 +84,7 @@ function App( ) {
     const response = await fetch("http://localhost:8100/api/manufacturers/");
     if (response.ok){
       const data = await response.json();
-      // console.log(data,"this is data");
-      // console.log(data.manufacturers, "this is data.manufacturers");
+
       setManufacturers(data.manufacturers);
 
     }
@@ -92,6 +92,28 @@ function App( ) {
       console.log("An error occurred fetching automobilevos");
     }
 
+  }
+
+  async function getModels(){
+    const response = await fetch("http://localhost:8100/api/models/");
+    if (response.ok){
+      const data = await response.json();
+
+      setModels(data.models);
+
+    }
+    else{
+      console.log("An error occurred fetching automobilevos");
+    }
+  }
+
+  async function getAutomobiles(){
+    const response = await fetch("	http://localhost:8100/api/automobiles/");
+    if (response.ok){
+      const data = await response.json();
+
+      setAutomobiles(data.autos);
+    }
   }
 
 
@@ -102,6 +124,8 @@ function App( ) {
     getSales();
     getAutomobileVO();
     getManufacturers();
+    getModels();
+    getAutomobiles();
   },[]);
 
   if (salesPeople === undefined){
@@ -112,7 +136,23 @@ function App( ) {
     return null;
   }
 
+  if (sales === undefined){
+    return null;
+  }
+
   if (automobileVOs === undefined){
+    return null;
+  }
+
+  if (manufacturers === undefined){
+    return null;
+  }
+
+  if (models === undefined){
+    return null;
+  }
+
+  if (automobiles === undefined){
     return null;
   }
 
@@ -136,6 +176,10 @@ function App( ) {
           <Route path="appointmentForm" element={ < AppointmentForm />} />
           <Route path="appointmentList" element={<AppointmentList   />} />
           <Route path="serviceHistory" element={ < ServiceHistoryList />} />
+          <Route path="models" element={<ListVehicleModels models={models}/>}/>
+          <Route path="modelForm" element={<VehicleModelForm getModels={getModels} manufacturers={manufacturers}/>}/>
+          <Route path="automobiles" element={<ListAutomobiles automobiles={automobiles} sales={sales}/>}/>
+          <Route path="automobileForm" element={<AutomobileForm getAutomobiles={getAutomobiles} models={models}/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 function CustomersList({ customers }){
-    // console.log(customers);
+
     return(
 
     <>
