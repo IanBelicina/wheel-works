@@ -34,6 +34,22 @@ function Nav() {
           <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="manufacturerForm">Create a Manufacturer</NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link active" to="technicianForm">Create Technician</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link active" to="technicianList">Technician List</NavLink>
+          </li>
+          <li className="nac-item">
+            <NavLink className="nav-link active" to="appointmentForm">Make Appointment</NavLink>
+          </li>
+          <li  className="nav-item">
+            <NavLink className="nav-link active" to="appointmentList" >Appointment List</NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink className="nav-link active" to="serviceHistory">Service History</NavLink>
+          </li>
           </ul>
         </div>
       </div>

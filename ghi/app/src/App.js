@@ -10,9 +10,13 @@ import SalesList from './SalesList';
 import SaleForm from './SaleForm';
 import ListManufacturers from './ListManufacturers';
 import ManufacturerForm from './ManufacturerForm';
+import TechnicianForm from './react_services/TechnicianForm';
+import TechnicianList from './react_services/TechnicianList';
+import AppointmentForm from './react_services/AppointmentForm';
+import AppointmentList from './react_services/AppointmentList';
+import ServiceHistoryList from './react_services/ServiceHistoryList'
 
-
-function App() {
+function App( ) {
 
   const [ salesPeople, setSalesPeople ] = useState([]);
   const [ customers, setCustomers ] = useState([]);
@@ -127,6 +131,11 @@ function App() {
           <Route path="saleForm" element={<SaleForm salesPeople={salesPeople} getSales={getSales} automobileVOs={automobileVOs} sales={sales} customers={customers}/>}/>
           <Route path="manufacturers" element={<ListManufacturers manufacturers={manufacturers}/>}/>
           <Route path="manufacturerForm" element={<ManufacturerForm getManufacturers={getManufacturers}/>}/>
+          <Route path="technicianForm" element={ <TechnicianForm />} />
+          <Route path="technicianList" element={< TechnicianList />} />
+          <Route path="appointmentForm" element={ < AppointmentForm />} />
+          <Route path="appointmentList" element={<AppointmentList   />} />
+          <Route path="serviceHistory" element={ < ServiceHistoryList />} />
         </Routes>
       </div>
     </BrowserRouter>

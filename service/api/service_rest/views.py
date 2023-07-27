@@ -53,7 +53,7 @@ def api_show_technician(request, pk):
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
     if request.method == "GET":
-        appointments = Appointment.objects.all()
+        appointments = Appointment.objects.exclude(status__in=['cancel', 'Finish'])
         return JsonResponse({"appointments": appointments}, encoder=AppointmentListEncoder)
     else:
         json_data = json.loads(request.body)
@@ -85,6 +85,17 @@ def api_show_appointment(request,pk):
 
         except Appointment.DoesNotExist:
             return JsonResponse({"message": "appointment Detail Error"}, status=400)
+
+
+
+
+@require_http_methods(["GET"])
+def api_history_appointments(request):
+    if request.method == "GET":
+        appointments = Appointment.objects.all()
+        return JsonResponse({"appointments": appointments}, encoder=AppointmentListEncoder)
+
+
 
 
 
