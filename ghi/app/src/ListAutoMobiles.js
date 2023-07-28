@@ -6,7 +6,7 @@ function ListAutomobiles({automobiles, sales}){
           return {...automobile, sold:soldStatus}
       });
 
-console.log("update Automobile",updateAutomobiles )
+
 
     return(
 

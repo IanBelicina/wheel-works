@@ -38,7 +38,7 @@ CarCar has three moicroservices that interact each have their front and back end
 - Sales microservice
 - Services microservice
 
-![Microservice Diagram](https://gitlab.com/vancebelicina/project-beta/-/raw/sales/images/projectbetadiagram.png?ref_type=heads)
+![Microservice Diagram](https://gitlab.com/vancebelicina/project-beta/-/raw/sales/images/finaldiagram.png?ref_type=heads)
 
 ## Service microservice
 
