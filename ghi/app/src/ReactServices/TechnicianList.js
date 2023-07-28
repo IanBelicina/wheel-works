@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 function TechnicianList(){
-   const  [technicianList, setTechnicianList] = useState([])
+   const  [technicianList, setTechnicianList] = useState([]);
 
     async function loadTechnician(request){
         const response = await fetch("http://localhost:8080/api/technicians/")
         if(response.ok){
            const data = await  response.json()
            setTechnicianList(data.technician)
-
         }
     }
     useEffect(() => {
@@ -22,10 +21,11 @@ function TechnicianList(){
 
     return(
       <div className="container">
-         <table className="table" >
+          <h1>Technicians</h1>
+         <table className="table table-striped" >
              <thead>
             <tr>
-            <th>Employee Id</th>
+            <th>Employee ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             </tr>
@@ -43,6 +43,6 @@ function TechnicianList(){
             </tbody>
         </table>
 </div>
-    )
+ )
 }
 export  default TechnicianList;

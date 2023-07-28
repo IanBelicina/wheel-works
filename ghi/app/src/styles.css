@@ -1,5 +1,8 @@
 
-
+* {
+    margin:0;
+    padding:0;
+}
 .cancel:hover{
     background-color: rgb(245, 8, 8)
 }
