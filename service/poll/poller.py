@@ -21,15 +21,12 @@ def auth_polling_status():
     content = json.loads(response.content)
 
     for auto_data in content["autos"]:
-# update automobile status  if it exist using the vin, else create if it does not exist
         AutomobileVO.objects.update_or_create(
            vin =  auto_data["vin"],
            defaults = {
                "sold": auto_data["sold"]
            }
         )
-
-
 
 def poll(repeat=True):
     while True:
