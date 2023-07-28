@@ -42,13 +42,13 @@ CarCar has three moicroservices that interact each have their front and back end
 
 ## Service microservice
 
-Service Microservice handles the general automobile services. The back end keeps track The functionality of  Technician - AutomobileVO - Appointment, which we defined in our models.
+Service Microservice handles appointment services for automobiles. The back end consists  Technician - AutomobileVO - Appointment, which we defined in our models.
 
- - Technician model manages the person in charge providing a service to the reserved automobile that assigned to  specific technician. Therefore we can create technician using his first and last name and employee id. and display a list of technicians, or delete.
+ - Technician: this model manages the person in charge providing a service to the reserved automobile that assigned. The form enables to create first and last name and employee id.
 
- - AutomobileVO keeps track sold or unsold cars and enable us to identify customers as VIP or not based on the automobile vin number.
+ - AutomobileVO keeps track sold or unsold cars and enable to identify customers as VIP or not based on the automobile vin number.
 
- - Appointment: enable to create appointment to service automobile, ability to select technician, and provide reason.
+ - Appointment: creates appointment in-order to  service automobile, the form takes vin#, customer name, reason, technician option selection.
 
 **INSOMNIA TEST**
   - Technician -  create(POST), list(GET), show(GET) and delete(DELETE).
@@ -79,9 +79,6 @@ http://localhost:8080/api/technicians/
 	}
 }
 
-
-
-
 ***| List of Technician | Get |***
 
 - http://localhost:8080/api/technicians/
@@ -104,9 +101,6 @@ http://localhost:8080/api/technicians/
     ]
 }
 
-
-
-
 ***| Get Specific  Technician | Get |***
 
 http://localhost:8080/api/technicians/23/
@@ -120,9 +114,6 @@ http://localhost:8080/api/technicians/23/
 	}
 }
 
-
-
-
 ***| Delete Specific  Technician | Delete |***
 
 http://localhost:8080/api/technicians/3/
@@ -131,7 +122,6 @@ http://localhost:8080/api/technicians/3/
 {
 	"message": "Successfully Deleted"
 }
-
 
 
 # | Action | Method | URL
@@ -146,7 +136,6 @@ http://localhost:8080/api/technicians/3/
 	"technician": 27,
 	"vip": 15
 }
-
 
 **Response**
 {
@@ -168,10 +157,7 @@ http://localhost:8080/api/technicians/3/
 }
 
 
-
-
 ***Get List  Appointments | Get |***
-
 
 http://localhost:8080/api/appointments/
 {
@@ -235,10 +221,7 @@ http://localhost:8080/api/appointments/43/
 }
 
 
-
 ***Update Appointments to Cancel | PUT |***
-
-
 http://localhost:8080/api/appointments/1/cancel/
 
 {
@@ -255,17 +238,12 @@ http://localhost:8080/api/appointments/3/finish/
 }
 
 
-
-
-
-
 # | Action | Method | URL | Automobile
 | ----------- | ----------- | ----------- |
 | Create  | POST |
 
 
 ***Create AutomobileVO | POST |***
-
 
 http://localhost:8080/api/automobiles/
 
@@ -275,7 +253,6 @@ http://localhost:8080/api/automobiles/
 	"sold": "True"
 
 }
-
 
 **Response**
 {
