@@ -42,63 +42,275 @@ CarCar has three moicroservices that interact each have their front and back end
 
 ## Service microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+Service Microservice handles the general automobile services. The back end keeps track The functionality of  Technician - AutomobileVO - Appointment, which we defined in our models.
 
-# Notes:
-- Write Models And RestFul Api For each Microservices
-- Implement RESTful API, poller, and React components For each Microservices
-- Write react component for Inventory API
+ - Technician model manages the person in charge providing a service to the reserved automobile that assigned to  specific technician. Therefore we can create technician using his first and last name and employee id. and display a list of technicians, or delete.
 
-# 1. services/api
-        - install django app in the project setting
-        - add the app to the project urls
-        - Create urls.py inside the app
+ - AutomobileVO keeps track sold or unsold cars and enable us to identify customers as VIP or not based on the automobile vin number.
 
-   ***ADD models.py***
-   - Technician
-   - AutomobileVO
-   - Appointment
+ - Appointment: enable to create appointment to service automobile, ability to select technician, and provide reason.
 
-   ***Views.py***
+**INSOMNIA TEST**
+  - Technician -  create(POST), list(GET), show(GET) and delete(DELETE).
+  - Appointment - create(POST), list(GET) , show(GET), update/cancel(PUT), update/finish(PUT), delete(DELETE)
+  - AutomobileVO - Create(POST) , list(GET)
 
-    * Technician
-      - Create Encoder with ModelEncoder
-      - Create  RESTFUL API Views function that "GET" and "POST" and "DELETE"
-    * Appointments
-     - Create Encoder with ModelEncoder
-     - Create  RESTFUL API Views function that "GET" and "POST" and "DELETE" "PUT/cancel" and "PUT/finish"
+# | Action | Method | URL
+| ----------- | ----------- | ----------- |
+| Create  Technician | POST |
 
-   ***urls.py***
+http://localhost:8080/api/technicians/
 
-         - Configure the view in a URLs for each function in the views
+{
+	"first_name": "Michael",
+	"last_name": "James",
+	"employee_id": "AJH39S20AK"
+}
 
-# 2. Automobile Poller
-    -  update status  AutomobileVO every 60 seconds with updated VINs from your Inventory service. VIN is a unique automobile identifier with 17#
-# 3. FRONT END REACT
 
-  ***ServiceForms.js***
-       * technician Form
-        - You need to create a form that allows a person to enter an automobile technician's name and employee ID
-      * Create Appointment Form
-        - You need to create a link in the navbar to get to the Add a technician form.
+**RESPONSE**
 
- ***ServiceList.js***
-        *List all technicians
-        - You need to create a page that lists all technicians showing each technician's employee ID and name.
-        - You need to create a link in the navbar to get to the Technicians page.
-
-# 4. TEST HTTP Request - ON Insomnia
-  - create, list, show and delete Technician
-  - create, list , show, update/cancel, update/finish, delete Appointment
+{
+	"technician": {
+		"id": 27,
+		"first_name": "Michael",
+		"last_name": "James",
+		"employee_id": "AJH39S20AK"
+	}
+}
 
 
 
 
-Explain your models and integration with the inventory
-microservice, here.
+***| List of Technician | Get |***
 
-******Best Practice Steps*********
+- http://localhost:8080/api/technicians/
+
+"technician": [
+
+{
+			"id": 12,
+			"first_name": "Tweek ",
+			"last_name": " Taki",
+			"employee_id": "DKS23DJ52"
+		},
+		{
+			"id": 13,
+			"first_name": "Helen ",
+			"last_name": " Keler",
+			"employee_id": "DJHSH282KS"
+		},
+
+    ]
+}
+
+
+
+
+***| Get Specific  Technician | Get |***
+
+http://localhost:8080/api/technicians/23/
+
+{
+	"technician": {
+		"id": 23,
+		"first_name": "SAM",
+		"last_name": "TES",
+		"employee_id": "KLNSD29FDJ"
+	}
+}
+
+
+
+
+***| Delete Specific  Technician | Delete |***
+
+http://localhost:8080/api/technicians/3/
+
+
+{
+	"message": "Successfully Deleted"
+}
+
+
+
+# | Action | Method | URL
+| ----------- | ----------- | ----------- |
+| Create  Appointment | POST |
+
+{
+  "date_time": "2023-07-31T13:45:09",
+  "reason": "Battery Change",
+	"vin": "OAIDFOI22SHN",
+  "customer": "Samuel Vapper",
+	"technician": 27,
+	"vip": 15
+}
+
+
+**Response**
+{
+	"appointments": {
+		"id": 60,
+		"vin": "OAIDFOI22SHN",
+		"customer": "Samuel Vapper",
+		"date_time": "2023-07-31T13:45:09",
+		"reason": "Battery Change",
+		"status": "created",
+		"technician": {
+			"id": 27,
+			"first_name": "Michael",
+			"last_name": "James",
+			"employee_id": "AJH39S20AK"
+		},
+		"vip": true
+	}
+}
+
+
+
+
+***Get List  Appointments | Get |***
+
+
+http://localhost:8080/api/appointments/
+{
+	"appointments": [
+		{
+			"id": 38,
+			"vin": "24S3048FDG",
+			"customer": "David Vilo",
+			"date_time": "2023-07-28T00:00:00+00:00",
+			"reason": "Tire Change",
+			"technician": {
+				"id": 15,
+				"first_name": "VIP",
+				"last_name": " ONE",
+				"employee_id": "DFHJSKJHDF"
+			},
+			"vip": false
+		},
+		{
+			"id": 39,
+			"vin": "DIOJDOSJ9282",
+			"customer": "Sami Dave",
+			"date_time": "2023-07-29T00:00:00+00:00",
+			"reason": "Tire Change",
+			"technician": {
+				"id": 12,
+				"first_name": "Tweek ",
+				"last_name": " Taki",
+				"employee_id": "DKS23DJ52"
+			},
+			"vip": false
+		},
+
+
+| Get Specific  Appointments | Get |
+http://localhost:8080/api/appointments/46/
+{
+	"appointment": {
+		"id": 46,
+		"vin": "SDKGDJGNE309",
+		"customer": "Daniel K",
+		"date_time": "2023-07-28T17:50:00+00:00",
+		"reason": "Tire Change",
+		"status": "created",
+		"technician": {
+			"id": 22,
+			"first_name": "Elite",
+			"last_name": "Care",
+			"employee_id": "AJDSDJOSJ"
+		},
+		"vip": false
+	}
+}
+
+
+***Delete Specific  Appointments | Delete |***
+
+http://localhost:8080/api/appointments/43/
+{
+	"message": "Successfully Deleted"
+}
+
+
+
+***Update Appointments to Cancel | PUT |***
+
+
+http://localhost:8080/api/appointments/1/cancel/
+
+{
+	"message": "Appointment Canceled"
+}
+
+
+| Update Appointments to Finish | PUT |
+
+http://localhost:8080/api/appointments/3/finish/
+
+{
+	"message": "Appointment Finished"
+}
+
+
+
+
+
+
+# | Action | Method | URL | Automobile
+| ----------- | ----------- | ----------- |
+| Create  | POST |
+
+
+***Create AutomobileVO | POST |***
+
+
+http://localhost:8080/api/automobiles/
+
+
+{
+	"vin": "OAIDFOI22SHN",
+	"sold": "True"
+
+}
+
+
+**Response**
+{
+	"Automobile": {
+		"id": 15,
+		"vin": "OAIDFOI22SHN",
+		"sold": "True"
+	}
+}
+
+
+***List AutomobileVO  | PUT |***
+
+
+http://localhost:8080/api/automobiles/
+
+
+	{
+			"id": 12,
+			"vin": "SDKJ238NSDHF",
+			"sold": true
+		},
+		{
+			"id": 4,
+			"vin": "1C3CC5FB2AN120174",
+			"sold": false
+		},
+		{
+			"id": 5,
+			"vin": "ADJHF3872987DBD",
+			"sold": false
+		},
+
+
+******Git Best Practice Steps*********
 1. git checkout -b my-branch
     A. Write Codes
     B. Execute git
@@ -112,7 +324,6 @@ microservice, here.
     - git push
 
 3. git checkout my-branch
-
 
 
 ## Sales microservice ##

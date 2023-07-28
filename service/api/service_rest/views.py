@@ -4,9 +4,6 @@ from common.json import ModelEncoder
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 import json
-# Create your views here.
-
-
 
 class AutomobileVOListEncoder(ModelEncoder):
     model = AutomobileVO
@@ -21,7 +18,7 @@ class TechnicianListEncoder(ModelEncoder):
 
 class AppointmentListEncoder(ModelEncoder):
     model = Appointment
-    properties = ["id","customer", "date_time", "reason", "status", "vin", "customer", "technician", "vip"]
+    properties = ["id","vin","customer", "date_time", "reason", "status", "technician", "vip"]
 
     encoders = {
         "technician": TechnicianListEncoder(), "automobile": AutomobileVOListEncoder()
@@ -94,12 +91,10 @@ def api_show_appointment(request,pk):
              if count > 0:
                  return JsonResponse({"message": "Successfully Deleted"})
              else:
-                 return JsonResponse({"message": "Failed To Delete"})
+                 return JsonResponse({"message": "Failed To Delete"}, status=400)
 
         except Appointment.DoesNotExist:
             return JsonResponse({"message": "appointment Detail Error"}, status=400)
-
-
 
 
 @require_http_methods(["GET"])
@@ -107,9 +102,6 @@ def api_history_appointments(request):
     if request.method == "GET":
         appointments = Appointment.objects.all()
         return JsonResponse({"appointments": appointments}, encoder=AppointmentListEncoder)
-
-
-
 
 
 @require_http_methods(["PUT"])
@@ -144,14 +136,3 @@ def api_automobile_lists(request):
         automobile_identity = json.loads(request.body)
         automobile = AutomobileVO.objects.create(**automobile_identity)
         return JsonResponse({"Automobile": automobile}, encoder=AutomobileVOListEncoder, safe=False)
-
-
- # try:
-        #     automobile =  AutomobileVO.objects.get(vin=json_data["vin"])
-        #     if automobile.sold:
-        #         json_data["vip"] = True
-        #     else:
-        #         json_data["vip"] = False
-
-        # except AutomobileVO.DoesNotExist:
-        #     json_data["vip"] = False

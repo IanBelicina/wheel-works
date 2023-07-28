@@ -17,8 +17,8 @@ const [appointmentList, setAppointments] = useState()
        }
     }
 
-    useEffect(() => {
-        appointmentsData()
+useEffect(() => {
+      appointmentsData()
 
       }, []);
 
@@ -71,7 +71,7 @@ const finishAppointment = async (id) => {
   }
 };
     return (
-        <div className="container">
+      <div className="container">
               <h1>Service Appointments</h1>
             <table className="table">
                 <thead>
@@ -87,19 +87,16 @@ const finishAppointment = async (id) => {
                     <th>Status</th>
                     </tr>
                 </thead>
-    <tbody>
+     <tbody>
        {appointmentList.map(appointment =>{
          console.log(appointment.date_time)
-          const dateTime = new Date(appointment.date_time);
-          const date = dateTime.toLocaleDateString('en-US');
-          const time = dateTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
             return(
                 <tr key={appointment.id}>
                     <td>{appointment.vin}</td>
                     <td>{appointment.vip ? 'Yes': 'No'}</td>
                     <td>{appointment.customer}</td>
-                     <td>{date}</td>
-                     <td>{time}</td>
+                  <td>{new Date(appointment.date_time).toLocaleDateString('en-US')}</td>
+                  <td>{new Date(appointment.date_time).toLocaleTimeString('en-US')}</td>
                     <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                     <td>{appointment.reason}</td>
                     <td>
@@ -112,6 +109,7 @@ const finishAppointment = async (id) => {
 </tbody>
 </table>
 </div>
+
  )
 }
 
