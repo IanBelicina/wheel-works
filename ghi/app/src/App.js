@@ -168,7 +168,7 @@ function App() {
           <Route path="customers" element={<CustomersList customers={customers}/>}/>
           <Route path="customerForm" element={<CustomerForm getCustomers={getCustomers}/>}/>
           <Route path="sales" element={<SalesList sales={sales} salesPeople={salesPeople}/>}/>
-          <Route path="saleForm" element={<SaleForm salesPeople={salesPeople} getSales={getSales} automobileVOs={automobileVOs} sales={sales} customers={customers}/>}/>
+          <Route path="saleForm" element={<SaleForm salesPeople={salesPeople} getSales={getSales} getAutomobileVO={getAutomobileVO} automobileVOs={automobileVOs} sales={sales} customers={customers}/>}/>
           <Route path="manufacturers" element={<ListManufacturers manufacturers={manufacturers}/>}/>
           <Route path="manufacturerForm" element={<ManufacturerForm getManufacturers={getManufacturers}/>}/>
           <Route path="technicianForm" element={ <TechnicianForm />} />
@@ -179,7 +179,7 @@ function App() {
           <Route path="models" element={<ListVehicleModels models={models}/>}/>
           <Route path="modelForm" element={<VehicleModelForm getModels={getModels} manufacturers={manufacturers}/>}/>
           <Route path="automobiles" element={<ListAutomobiles automobiles={automobiles} sales={sales}/>}/>
-          <Route path="automobileForm" element={<AutomobileForm getAutomobiles={getAutomobiles} models={models}/>}/>
+          <Route path="automobileForm" element={<AutomobileForm getAutomobiles={getAutomobiles}  models={models}/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -34,6 +34,8 @@ function AutomobileForm({ models, getAutomobiles }){
             setModel('');
 
             getAutomobiles();
+            // getAutomobileVO();
+
         }
 
     }

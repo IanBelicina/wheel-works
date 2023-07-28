@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function SaleForm({automobileVOs, sales, getSales, customers,salesPeople}){
+function SaleForm({getAutomobileVO, automobileVOs, sales, getSales, customers,salesPeople}){
 
 
 
@@ -46,6 +46,12 @@ function SaleForm({automobileVOs, sales, getSales, customers,salesPeople}){
         }
 
     }
+
+    useEffect(() => {
+
+      getAutomobileVO();
+
+    },[]);
 
     function handleAutomobileVoChange(event){
         const {value} = event.target;
