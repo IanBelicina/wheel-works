@@ -7,6 +7,12 @@ import json
 # Create your views here.
 
 
+
+class AutomobileVOListEncoder(ModelEncoder):
+    model = AutomobileVO
+    properties = ["id","vin", "sold"]
+
+
 class TechnicianListEncoder(ModelEncoder):
     model  = Technician
     properties = [
@@ -15,14 +21,12 @@ class TechnicianListEncoder(ModelEncoder):
 
 class AppointmentListEncoder(ModelEncoder):
     model = Appointment
-    properties = ["id","customer", "date_time", "status", "vin", "customer", "technician"]
+    properties = ["id","customer", "date_time", "reason", "status", "vin", "customer", "technician", "vip"]
 
     encoders = {
-        "technician": TechnicianListEncoder()
+        "technician": TechnicianListEncoder(), "automobile": AutomobileVOListEncoder()
         }
-class AutomobileVO(ModelEncoder):
-    model = AutomobileVO
-    properties = ["vin", "sold"]
+
 
 
 @require_http_methods(["GET", "POST"])
@@ -63,6 +67,15 @@ def api_list_appointments(request):
             json_data["technician"] = technician
         except Technician.DoesNotExist:
             return JsonResponse({"message": "Invalid Technician Id"}, status=400)
+
+        try:
+            automobile =  AutomobileVO.objects.get(vin=json_data["vin"])
+            if automobile.sold:
+                json_data["vip"] = True
+            else:
+                json_data["vip"] = False
+        except AutomobileVO.DoesNotExist:
+            json_data["vip"] = False
 
         appointment = Appointment.objects.create(**json_data)
         return JsonResponse({"appointments":appointment}, encoder=AppointmentListEncoder, safe=False)
@@ -119,3 +132,26 @@ def api_finish_appointment(request, pk):
         return JsonResponse({"message": "Appointment Finished"})
     except Appointment.DoesNotExist:
         return JsonResponse({"Error": "Appointment Not Exist"}, status=404)
+
+
+
+@require_http_methods(["GET", "POST"])
+def api_automobile_lists(request):
+    if request.method == "GET":
+        automobile = AutomobileVO.objects.all()
+        return JsonResponse({"automobiles":automobile}, encoder=AutomobileVOListEncoder, safe=False)
+    else:
+        automobile_identity = json.loads(request.body)
+        automobile = AutomobileVO.objects.create(**automobile_identity)
+        return JsonResponse({"Automobile": automobile}, encoder=AutomobileVOListEncoder, safe=False)
+
+
+ # try:
+        #     automobile =  AutomobileVO.objects.get(vin=json_data["vin"])
+        #     if automobile.sold:
+        #         json_data["vip"] = True
+        #     else:
+        #         json_data["vip"] = False
+
+        # except AutomobileVO.DoesNotExist:
+        #     json_data["vip"] = False

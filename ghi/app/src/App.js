@@ -10,11 +10,11 @@ import SalesList from './SalesList';
 import SaleForm from './SaleForm';
 import ListManufacturers from './ListManufacturers';
 import ManufacturerForm from './ManufacturerForm';
-import TechnicianForm from './react_services/TechnicianForm';
-import TechnicianList from './react_services/TechnicianList';
-import AppointmentForm from './react_services/AppointmentForm';
-import AppointmentList from './react_services/AppointmentList';
-import ServiceHistoryList from './react_services/ServiceHistoryList'
+import TechnicianForm from './ReactServices/TechnicianForm';
+import TechnicianList from './ReactServices/TechnicianList';
+import AppointmentForm from './ReactServices/AppointmentForm';
+import AppointmentList from './ReactServices/AppointmentList';
+import ServiceHistoryList from './ReactServices/ServiceHistoryList'
 
 import ListVehicleModels from './ListVehicleModels';
 import VehicleModelForm from './VehicleModelForm';

@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 
-
 function TechnicianForm(){
     let [firstName, setFirstName] = useState('')
     let [lastName, setLastName] = useState('')
@@ -32,7 +31,6 @@ function TechnicianForm(){
             setEmployeeId('')
         }
        }
-
 
 
 //update state value with the given new value triggered by the event

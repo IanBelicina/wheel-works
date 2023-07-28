@@ -5,7 +5,8 @@ from .views import (api_list_technicians,
                     api_show_appointment,
                     api_cancel_appointment,
                     api_finish_appointment,
-                    api_history_appointments
+                    api_history_appointments,
+                    api_automobile_lists
                     )
 urlpatterns  =[
  path("technicians/", api_list_technicians, name="api_list_technicians"),
@@ -14,7 +15,8 @@ urlpatterns  =[
  path("appointments/<int:pk>/", api_show_appointment, name="api_show_appointment"),
  path("appointments/<int:pk>/cancel/", api_cancel_appointment, name="api_cancel_appointment"),
  path("appointments/<int:pk>/finish/", api_finish_appointment, name="api_finish_appointment"),
- path("appointments/history/", api_history_appointments, name="api_history_appointments")
-
+ path("appointments/history/", api_history_appointments, name="api_history_appointments"),
+path("appointments/history/", api_history_appointments, name="api_history_appointments"),
+path("automobiles/", api_automobile_lists, name="api_automobile_lists"),
 
 ]

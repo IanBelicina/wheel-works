@@ -25,7 +25,8 @@ function AppointmentForm( {}){
        console.log("Fetched Data", data)
        console.log("data", data.technician)
        setTechnicians(data.technician)
-       console.log("technician data" , technicians)
+
+       console.log("technician data" , technician)
    }else{
     console.log("ERROR While Fetching")
 
@@ -33,14 +34,17 @@ function AppointmentForm( {}){
  }
 
 
-    async function formSubmit( ){
+    async function formSubmit(event){
+        event.preventDefault()
         const data = {}
 
         data.technician = technician
         data.vin = automobileVin
-        data.date_time = dateTime
+        data.date_time = dateTime + 'T' + selectTime + ':00'
         data.customer = customer
         data.reason = stateReason
+
+console.log(data)
 
        let  url = "http://localhost:8080/api/appointments/"
 
@@ -63,6 +67,9 @@ function AppointmentForm( {}){
            setCustomer('')
            setDateTime('')
            setStateReason('')
+           setSelectTime('')
+
+
        }
     };
 
@@ -98,9 +105,6 @@ function AppointmentForm( {}){
       }
 
 
-
-
-
     useEffect(() =>{
         selectTechnician()
         console.log("Technicians after fetching:", technicians);
@@ -127,14 +131,13 @@ function AppointmentForm( {}){
                         </div>
 
                         <div className="mb-4">
-                            <label className="form-label" htmlFor="date">Date</label>
-                            <input onChange={handleDateChange} required  id="date" name="date" className="form-control" type="date"></input>
+                            <label className="form-label" htmlFor="date_time">Date</label>
+                            <input onChange={handleDateChange} required  id="date_time" name="date_time" className="form-control" type="date"></input>
                         </div>
 
                         <div className="mb-4">
-                            <label className="form-label" htmlFor="">Time</label>
-                            <input value={selectTime} onChange={handleTimeChange} required  id="time" name="time" className="form-control" type="time"></input>
-
+                            <label className="form-label" htmlFor="date_time">Time</label>
+                            <input onChange={handleTimeChange} required  id="date_time" name="date_time" className="form-control" type="time"></input>
                         </div>
 
 
