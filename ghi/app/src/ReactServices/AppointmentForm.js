@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 
 function AppointmentForm( {}){
 
-    const [technicians, setTechnicians] = useState([]) //handle dropdown
+    const [technicians, setTechnicians] = useState([])
 
     const [technician, setSelectedTechnician] = useState('') // value to selected technician
     const [automobileVin, setAutomobileVin] = useState('')
@@ -13,17 +13,13 @@ function AppointmentForm( {}){
     const [selectTime, setSelectTime] = useState('')
 
 
-
  const selectTechnician = async () => {
   const url = "http://localhost:8080/api/technicians/"
-
    const response = await fetch(url)
-
    if (response.ok){
        const data = await response.json();
-
-       console.log("Fetched Data", data)
-       console.log("data", data.technician)
+    //    console.log("Fetched Data", data)
+    //    console.log("data", data.technician)
        setTechnicians(data.technician)
 
        console.log("technician data" , technician)
@@ -140,9 +136,6 @@ console.log(data)
                             <input onChange={handleTimeChange} required  id="date_time" name="date_time" className="form-control" type="time"></input>
                         </div>
 
-
-
-                    {/*  TECHNICIAN Name SELECTION, instead of number in  */}
                         <select onChange={handleTechnician} value={technician}  className="form-select" id="technician" name="technician" >
                             <option value="">Technician</option>
                             {technicians.map(technician =>{

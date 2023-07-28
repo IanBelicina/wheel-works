@@ -27,8 +27,6 @@ if(appointmentList === undefined){
 }
 
 
-//################################### CANCEL AND FINISH BUTTON ##############################
-
 const cancelAppointment = async (id) => {
   const url = `http://localhost:8080/api/appointments/${id}/cancel/`;
 
@@ -58,13 +56,13 @@ const finishAppointment = async (id) => {
     const response = await fetch(url, { method: 'PUT' });
 
     if (response.ok) {
-      // Update the status of the appointment in the local state to 'finish'
-      const updatedAppointments = appointmentList.map(app =>
-        app.id === id ? {...app, status: 'finish'} : app
+      // Need to Update the status of the appointment in the local state to 'finish'
+      const updatedAppointments = appointmentList.map(appointment =>
+        appointment.id === id ? {...appointment, status: 'finish'} : appointment
       );
 
       // Filter out the finished appointment from the local state
-      setAppointments(updatedAppointments.filter(app => app.id !== id));
+      setAppointments(updatedAppointments.filter(appointment => appointment.id !== id));
     } else {
       console.error('Error while finishing', response.status);
     }
@@ -72,8 +70,6 @@ const finishAppointment = async (id) => {
     console.error("ERROR while finishing", err);
   }
 };
-
-
     return (
         <div className="container">
               <h1>Service Appointments</h1>
@@ -94,10 +90,9 @@ const finishAppointment = async (id) => {
     <tbody>
        {appointmentList.map(appointment =>{
          console.log(appointment.date_time)
-
-  const dateTime = new Date(appointment.date_time);
-    const date = dateTime.toLocaleDateString('en-US');
-    const time = dateTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+          const dateTime = new Date(appointment.date_time);
+          const date = dateTime.toLocaleDateString('en-US');
+          const time = dateTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
             return(
                 <tr key={appointment.id}>
                     <td>{appointment.vin}</td>

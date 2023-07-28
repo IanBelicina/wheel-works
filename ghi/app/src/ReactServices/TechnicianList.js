@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-
-
 function TechnicianList(){
    const  [technicianList, setTechnicianList] = useState([])
 
@@ -21,7 +19,6 @@ function TechnicianList(){
     if (technicianList === undefined){
         return null;
       }
-
 
     return(
       <div className="container">
@@ -48,6 +45,4 @@ function TechnicianList(){
 </div>
     )
 }
-
-
 export  default TechnicianList;
