@@ -50,6 +50,7 @@ function AppointmentForm(){
            setDateTime('')
            setStateReason('')
            setSelectTime('')
+           setTechnicians([])
        }
     };
 
@@ -96,22 +97,22 @@ function AppointmentForm(){
 
                          <div className="mb-4">
                             <label className="form-label" htmlFor="vin">Automobile VIN</label>
-                            <input onChange={handleVinChange} required  id="vin" name="vin" className="form-control" type="text"></input>
+                            <input value={automobileVin} onChange={handleVinChange} required  id="vin" name="vin" className="form-control" type="text"></input>
                           </div>
 
                           <div className="mb-4">
                              <label className="form-label" htmlFor="customer">Customer</label>
-                             <input onChange={handleCustomerChange} required  id="customer" name="customer" className="form-control"></input>
+                             <input value={customer} onChange={handleCustomerChange} required  id="customer" name="customer" className="form-control"></input>
                           </div>
 
                            <div className="mb-4">
                                <label className="form-label" htmlFor="date_time">Date</label>
-                                <input onChange={handleDateChange} required  id="date_time" name="date_time" className="form-control" type="date"></input>
+                                <input value={dateTime} onChange={handleDateChange} required  id="date_time" name="date_time" className="form-control" type="date"></input>
                            </div>
 
                             <div className="mb-4">
                                <label className="form-label" htmlFor="date_time">Time</label>
-                                 <input onChange={handleTimeChange} required  id="date_time" name="date_time" className="form-control" type="time"></input>
+                                 <input value={selectTime}  onChange={handleTimeChange} required  id="date_time" name="date_time" className="form-control" type="time"></input>
                             </div>
 
                             <div>
@@ -127,7 +128,7 @@ function AppointmentForm(){
 
                             <div className="mb-4">
                                  <label className="form-label" htmlFor="reason">Reason</label>
-                                <input onChange={handleReasonChange} required  id="reason" name="reason" className="form-control" ></input>
+                                <input value={stateReason} onChange={handleReasonChange} required  id="reason" name="reason" className="form-control" ></input>
                              </div>
                         <button type="submit" className="btn-primary form-control" >Create</button>
                     </form>
