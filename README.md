@@ -229,7 +229,8 @@ http://localhost:8080/api/appointments/1/cancel/
 }
 
 
-| Update Appointments to Finish | PUT |
+***| Update Appointments to Finish | PUT |***
+
 
 http://localhost:8080/api/appointments/3/finish/
 
@@ -244,7 +245,6 @@ http://localhost:8080/api/appointments/3/finish/
 
 
 ***Create AutomobileVO | POST |***
-
 http://localhost:8080/api/automobiles/
 
 
@@ -265,8 +265,6 @@ http://localhost:8080/api/automobiles/
 
 
 ***List AutomobileVO  | PUT |***
-
-
 http://localhost:8080/api/automobiles/
 
 
