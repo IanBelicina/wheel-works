@@ -90,32 +90,28 @@ function AppointmentForm(){
     return(
         <div className="row">
             <div className="offset-3 col">
-                <div className=" shadow mt-4 p-4">
-                    <h1>Create a Service Appointment </h1>
+                <div className=" card-body shadow mt-4 p-4">
+                    <h1 className='card-title'>Create a Service Appointment </h1>
                     <form onSubmit={formSubmit}>
 
                          <div className="mb-4">
-                            <label className="form-label" htmlFor="vin">Automobile VIN</label>
-                            <input onChange={handleVinChange} required  id="vin" name="vin" className="form-control" type="text"></input>
+                            <input onChange={handleVinChange} placeholder='VIN' required  id="vin" name="vin" className="form-control" type="text"></input>
                           </div>
 
                           <div className="mb-4">
-                             <label className="form-label" htmlFor="customer">Customer</label>
-                             <input onChange={handleCustomerChange} required  id="customer" name="customer" className="form-control"></input>
+                             <input onChange={handleCustomerChange} placeholder='Customer' required  id="customer" name="customer" className="form-control"></input>
                           </div>
 
                            <div className="mb-4">
-                               <label className="form-label" htmlFor="date_time">Date</label>
-                                <input onChange={handleDateChange} required  id="date_time" name="date_time" className="form-control" type="date"></input>
+
+                                <input onChange={handleDateChange} placeholder='Date' required  id="date_time" name="date_time" className="form-control" type="date"></input>
                            </div>
 
                             <div className="mb-4">
-                               <label className="form-label" htmlFor="date_time">Time</label>
-                                 <input onChange={handleTimeChange} required  id="date_time" name="date_time" className="form-control" type="time"></input>
+                                 <input onChange={handleTimeChange} placeholder='Time' required  id="date_time" name="date_time" className="form-control" type="time"></input>
                             </div>
 
                             <div>
-                              <label className="form-label" htmlFor="technician">Technician</label>
                               <select onChange={handleTechnician} value={technician}  className="form-select" id="technician" name="technician">
                                     <option value="">Choose a technician</option>
                                      {technicians.map(technician =>{
@@ -127,7 +123,7 @@ function AppointmentForm(){
 
                             <div className="mb-4">
                                  <label className="form-label" htmlFor="reason">Reason</label>
-                                <input onChange={handleReasonChange} required  id="reason" name="reason" className="form-control" ></input>
+                                <input onChange={handleReasonChange} placeholder='Reason' required  id="reason" name="reason" className="form-control" ></input>
                              </div>
                         <button type="submit" className="btn-primary form-control" >Create</button>
                     </form>

@@ -1,8 +1,7 @@
 
 * {
-    margin:0;
-    padding:0;
-}
+    box-sizing: border-box;
+  }
 .cancel:hover{
     background-color: rgb(245, 8, 8)
 }
@@ -11,4 +10,71 @@
 .finish:hover{
     background-color: rgb(22, 159, 22);
     color: whitesmoke;
+}
+
+.remove-decoration,
+.dropdown-item
+{
+    color: black;
+    text-decoration: none;
+}
+
+.footer-text{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* .body-color{
+    background-color: #CACDD1;
+    margin: 0;
+    padding: 0;
+
+} */
+
+.nav-color {
+    background-color: #0b421a;
+  }
+
+.dropdown-menu{
+    background-color: #604c4c;
+}
+
+.container{
+    background-color: #eac784;
+}
+
+  .navbar-dark .navbar-nav .nav-link.active.dropdown-item {
+    background-color: #604c4c;
+    color: #fffcfc;
+  }
+
+  .card-body{
+    background-color: #362415;
+    border: 0
+    /* color: #fffcfc; */
+  }
+
+  .card-title{
+     color: #fffcfc;
+  }
+
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1447px;
+    margin: 0;
+    padding: 50px;
+}
+
+
+
+.btn.btn-lg.btn-primary{
+  background-color: #604c4c;
+  color: #fffcfc;
+  border: 0;
+}
+
+.btn-primary{
+  background-color: #604c4c;
+  color: #fffcfc;
+  border: 0;
 }

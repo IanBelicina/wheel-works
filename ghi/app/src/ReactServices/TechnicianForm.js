@@ -47,8 +47,8 @@ function TechnicianForm(){
     return (
             <div className="row g-3">
                 <div className="offset-3 col-6">
-                    <div className=" shadow p-4 mt-4">
-                        <h1>Add a Technician</h1>
+                    <div className=" card-body shadow p-4 mt-4">
+                        <h1 className='card-title'>Add a Technician</h1>
                         <form onSubmit={formSubmit} id="create-technician-form" >
                             <div className="mb-4">
                             <label htmlFor="first_name" className="form-label"></label>
