@@ -60,16 +60,18 @@ Service Microservice handles appointment services for automobiles. The back end 
 | Create  Technician | POST |
 
 http://localhost:8080/api/technicians/
+```
 
 {
 	"first_name": "Michael",
 	"last_name": "James",
 	"employee_id": "AJH39S20AK"
 }
+```
 
 
 **RESPONSE**
-
+```
 {
 	"technician": {
 		"id": 27,
@@ -78,11 +80,11 @@ http://localhost:8080/api/technicians/
 		"employee_id": "AJH39S20AK"
 	}
 }
-
+```
 ***| List of Technician | Get |***
 
 - http://localhost:8080/api/technicians/
-
+```
 "technician": [
 
 {
@@ -100,11 +102,11 @@ http://localhost:8080/api/technicians/
 
     ]
 }
-
+```
 ***| Get Specific  Technician | Get |***
 
 http://localhost:8080/api/technicians/23/
-
+```
 {
 	"technician": {
 		"id": 23,
@@ -113,21 +115,21 @@ http://localhost:8080/api/technicians/23/
 		"employee_id": "KLNSD29FDJ"
 	}
 }
-
+```
 ***| Delete Specific  Technician | Delete |***
 
 http://localhost:8080/api/technicians/3/
 
-
+```
 {
 	"message": "Successfully Deleted"
 }
-
+```
 
 # | Action | Method | URL
 | ----------- | ----------- | ----------- |
 | Create  Appointment | POST |
-
+```
 {
   "date_time": "2023-07-31T13:45:09",
   "reason": "Battery Change",
@@ -136,8 +138,9 @@ http://localhost:8080/api/technicians/3/
 	"technician": 27,
 	"vip": 15
 }
-
+```
 **Response**
+```
 {
 	"appointments": {
 		"id": 60,
@@ -155,11 +158,12 @@ http://localhost:8080/api/technicians/3/
 		"vip": true
 	}
 }
-
+```
 
 ***Get List  Appointments | Get |***
 
 http://localhost:8080/api/appointments/
+```
 {
 	"appointments": [
 		{
@@ -191,9 +195,10 @@ http://localhost:8080/api/appointments/
 			"vip": false
 		},
 
-
+```
 | Get Specific  Appointments | Get |
 http://localhost:8080/api/appointments/46/
+```
 {
 	"appointment": {
 		"id": 46,
@@ -211,34 +216,35 @@ http://localhost:8080/api/appointments/46/
 		"vip": false
 	}
 }
-
+```
 
 ***Delete Specific  Appointments | Delete |***
 
 http://localhost:8080/api/appointments/43/
+```
 {
 	"message": "Successfully Deleted"
 }
-
+```
 
 ***Update Appointments to Cancel | PUT |***
 http://localhost:8080/api/appointments/1/cancel/
-
+```
 {
 	"message": "Appointment Canceled"
 }
 
-
+```
 ***| Update Appointments to Finish | PUT |***
 
 
 http://localhost:8080/api/appointments/3/finish/
-
+```
 {
 	"message": "Appointment Finished"
 }
 
-
+```
 # | Action | Method | URL | Automobile
 | ----------- | ----------- | ----------- |
 | Create  | POST |
@@ -247,14 +253,15 @@ http://localhost:8080/api/appointments/3/finish/
 ***Create AutomobileVO | POST |***
 http://localhost:8080/api/automobiles/
 
-
+```
 {
 	"vin": "OAIDFOI22SHN",
 	"sold": "True"
 
 }
-
+```
 **Response**
+```
 {
 	"Automobile": {
 		"id": 15,
@@ -262,12 +269,12 @@ http://localhost:8080/api/automobiles/
 		"sold": "True"
 	}
 }
-
+```
 
 ***List AutomobileVO  | PUT |***
 http://localhost:8080/api/automobiles/
 
-
+```
 	{
 			"id": 12,
 			"vin": "SDKJ238NSDHF",
@@ -284,7 +291,7 @@ http://localhost:8080/api/automobiles/
 			"sold": false
 		},
 
-
+```
 ******Git Best Practice Steps*********
 1. git checkout -b my-branch
     A. Write Codes
@@ -347,22 +354,22 @@ Returns:
 # Create Sales Person example:
 
 Send JSON body:
-
+```
 {
 	"first_name": "Jiji",
 	"last_name":"Montenegro",
 	"employee_id":"jmontenegro5"
 }
-
+```
 Returns:
-
+```
 {
 	"id": 9,
 	"first_name": "Jiji",
 	"last_name": "Montenegro",
 	"employee_id": "jmontenegro5"
 }
-
+```
 # Delete Sales Person example:
 
 Request this URL:
@@ -370,10 +377,11 @@ Request this URL:
 http://localhost:8090/api/salespeople/<int:id>
 
 Returns:
+```
 {
 	"deleted": true
 }
-
+```
 
 ## Customer ##
 
@@ -387,7 +395,7 @@ Delete Specific Customer | DELETE | http://localhost:8090/api/customers/<int:id>
 # List Customers example:
 
 Returns:
-
+```
 {
 	"customer": [
 		{
@@ -413,20 +421,20 @@ Returns:
 		}
 	]
 }
-
+```
 # Create Customer example:
 
 Send this JSON Body:
-
+```
 {
 	"first_name":"John",
 	"last_name":"Doe",
 	"address":"444 addy",
 	"phone_number":"544-444-4444"
 }
-
+```
 Returns:
-
+```
 {
 	"id": 5,
 	"first_name": "John",
@@ -434,7 +442,7 @@ Returns:
 	"address": "444 addy",
 	"phone_number": "544-444-4444"
 }
-
+```
 # Delete Customer example"
 
 Request to this URL:
@@ -442,11 +450,11 @@ Request to this URL:
 http://localhost:8090/api/customers/<int:id>
 
 Returns:
-
+```
 {
 	"deleted": true
 }
-
+```
 ## Sale ##
 
 Action | Method | URL
@@ -458,7 +466,7 @@ Delete Specific Customer | DELETE | http://localhost:8090/api/sales/<int:id>
 # List Sales example:
 
 Returns:
-
+```
 {
 	"sales": [
 		{
@@ -485,11 +493,11 @@ Returns:
 		}
 	]
 }
-
+```
 # Create Sale example:
 
 Send JSON body:
-
+```
 {
 	"price":"$15,000",
 	"auto_mobile":"2", <--- automobilevo id
@@ -497,8 +505,9 @@ Send JSON body:
 	"customer":"4" <--- customer id
 
 }
-
+```
 Returns:
+```
 {
 	"id": 15,
 	"auto_mobile": {
@@ -522,19 +531,19 @@ Returns:
 	"price": "$15,000"
 }
 
-
+```
 # Delete Sale example:
 
 Request to this URL:
 
 http://localhost:8090/api/sales/<int:id>
-
+```
 Returns:
 
 {
 	"deleted": true
 }
-
+```
 
 ## Inventory microservice ##
 
@@ -559,7 +568,7 @@ Update a Specific Manufacturer | PUT | http://localhost:8100/api/manufacturers/<
 # List Manufacturers example:
 
 Returns:
-
+```
 {
 	"manufacturers": [
 		{
@@ -584,24 +593,24 @@ Returns:
 		}
 	]
 }
-
+```
 # Create new manufacturer example:
 
 Send JSON body:
-
+```
 {
 	"name":"BMW"
 }
-
+```
 
 Returns:
-
+```
 {
 	"href": "/api/manufacturers/2/",
 	"id": 2,
 	"name": "BMW"
 }
-
+```
 
 # Delete specfic manufacturer:
 
@@ -611,12 +620,12 @@ Request to this URL:
 
 
 Returns:
-
+```
 {
 	"id": null,
 	"name": "Toyota"
 }
-
+```
 # VehicleModel
 
 Action | Method | URL
@@ -629,7 +638,7 @@ Update a Specific VehicleModel | PUT | http://localhost:8100/api/models/<int:id>
 # List Vehicle Models example:
 
 Returns:
-
+```
 {
 	"models": [
 		{
@@ -656,19 +665,19 @@ Returns:
 		}
 	]
 }
-
+```
 # Create Vehicle Model example:
 
 Send JSON body:
-
+```
 {
 	"name":"i8",
 	"picture_url":"https://www.bmw.com/content/dam/bmw/marketBMWCOM/bmw_com/categories/Innovation/si8/i8-02-media-hd.jpg?imwidth=1280",
 	"manufacturer_id":"2"
 }
-
+```
 Returns:
-
+```
 {
 	"href": "/api/models/2/",
 	"id": 2,
@@ -680,7 +689,7 @@ Returns:
 		"name": "BMW"
 	}
 }
-
+```
 # Automobile
 
 Action | Method | URL
@@ -694,7 +703,7 @@ Update a Specific Automobile | PUT | http://localhost:8100/api/automobiles/<vin>
 # List Automobiles example:
 
 Returns:
-
+```
 {
 	"autos": [
 		{
@@ -756,21 +765,21 @@ Returns:
 		}
 	]
 }
-
+```
 
 # Create Automobile example:
 
 Send JSON body:
-
+```
 {
   "color": "silver",
   "year": 2022,
   "vin": "vinvinvin",
   "model_id": 2 <--- vehicle model id
 }
-
+```
 Returns:
-
+```
 {
 	"href": "/api/automobiles/vinvinvin/",
 	"id": 3,
@@ -790,3 +799,4 @@ Returns:
 	},
 	"sold": false
 }
+```
