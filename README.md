@@ -323,6 +323,7 @@ Delete Specific Sales Person | DELETE | http://localhost:8090/api/salespeople/<i
 # List Sales People:
 
 Returns:
+```
 {
 	"sales_person": [
 		{
@@ -339,6 +340,7 @@ Returns:
 		}
 	]
 }
+```
 
 
 
