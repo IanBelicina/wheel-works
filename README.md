@@ -14,7 +14,7 @@ Team:
   -Node.js
   -Docker
 
-  1. Fork and clone this repository to your computer <https://gitlab.com/vancebelicina/project-beta>
+  1. Fork and clone this repository to your computer <[https://gitlab.com/vancebelicina/project-beta](https://github.com/IanBelicina/wheel-works.git)>
   2. Build the project and run the project in docker using the following commands in the terminal
     - docker volume create beta-data
     - docker-compose build
