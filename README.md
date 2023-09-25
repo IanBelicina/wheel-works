@@ -40,272 +40,6 @@ Team:
 
 ![Microservice Diagram](https://gitlab.com/vancebelicina/project-beta/-/raw/sales/images/finaldiagram.png?ref_type=heads)
 
-## Service microservice
-
-Service Microservice handles appointment services for automobiles. The back end consists  Technician - AutomobileVO - Appointment, which we defined in our models.
-
- - Technician: this model manages the person in charge providing a service to the reserved automobile that assigned. The form enables to create first and last name and employee id.
-
- - AutomobileVO keeps track sold or unsold cars and enable to identify customers as VIP or not based on the automobile vin number.
-
- - Appointment: creates appointment in-order to  service automobile, the form takes vin#, customer name, reason, technician option selection.
-
-**INSOMNIA TEST**
-  - Technician -  create(POST), list(GET), show(GET) and delete(DELETE).
-  - Appointment - create(POST), list(GET) , show(GET), update/cancel(PUT), update/finish(PUT), delete(DELETE)
-  - AutomobileVO - Create(POST) , list(GET)
-
-# | Action | Method | URL
-| ----------- | ----------- | ----------- |
-| Create  Technician | POST |
-
-http://localhost:8080/api/technicians/
-```
-
-{
-	"first_name": "Michael",
-	"last_name": "James",
-	"employee_id": "AJH39S20AK"
-}
-```
-
-
-**RESPONSE**
-```
-{
-	"technician": {
-		"id": 27,
-		"first_name": "Michael",
-		"last_name": "James",
-		"employee_id": "AJH39S20AK"
-	}
-}
-```
-***| List of Technician | Get |***
-
-- http://localhost:8080/api/technicians/
-```
-"technician": [
-
-{
-			"id": 12,
-			"first_name": "Tweek ",
-			"last_name": " Taki",
-			"employee_id": "DKS23DJ52"
-		},
-		{
-			"id": 13,
-			"first_name": "Helen ",
-			"last_name": " Keler",
-			"employee_id": "DJHSH282KS"
-		},
-
-    ]
-}
-```
-***| Get Specific  Technician | Get |***
-
-http://localhost:8080/api/technicians/23/
-```
-{
-	"technician": {
-		"id": 23,
-		"first_name": "SAM",
-		"last_name": "TES",
-		"employee_id": "KLNSD29FDJ"
-	}
-}
-```
-***| Delete Specific  Technician | Delete |***
-
-http://localhost:8080/api/technicians/3/
-
-```
-{
-	"message": "Successfully Deleted"
-}
-```
-
-# | Action | Method | URL
-| ----------- | ----------- | ----------- |
-| Create  Appointment | POST |
-```
-{
-  "date_time": "2023-07-31T13:45:09",
-  "reason": "Battery Change",
-	"vin": "OAIDFOI22SHN",
-  "customer": "Samuel Vapper",
-	"technician": 27,
-	"vip": 15
-}
-```
-**Response**
-```
-{
-	"appointments": {
-		"id": 60,
-		"vin": "OAIDFOI22SHN",
-		"customer": "Samuel Vapper",
-		"date_time": "2023-07-31T13:45:09",
-		"reason": "Battery Change",
-		"status": "created",
-		"technician": {
-			"id": 27,
-			"first_name": "Michael",
-			"last_name": "James",
-			"employee_id": "AJH39S20AK"
-		},
-		"vip": true
-	}
-}
-```
-
-***Get List  Appointments | Get |***
-
-http://localhost:8080/api/appointments/
-```
-{
-	"appointments": [
-		{
-			"id": 38,
-			"vin": "24S3048FDG",
-			"customer": "David Vilo",
-			"date_time": "2023-07-28T00:00:00+00:00",
-			"reason": "Tire Change",
-			"technician": {
-				"id": 15,
-				"first_name": "VIP",
-				"last_name": " ONE",
-				"employee_id": "DFHJSKJHDF"
-			},
-			"vip": false
-		},
-		{
-			"id": 39,
-			"vin": "DIOJDOSJ9282",
-			"customer": "Sami Dave",
-			"date_time": "2023-07-29T00:00:00+00:00",
-			"reason": "Tire Change",
-			"technician": {
-				"id": 12,
-				"first_name": "Tweek ",
-				"last_name": " Taki",
-				"employee_id": "DKS23DJ52"
-			},
-			"vip": false
-		},
-
-```
-| Get Specific  Appointments | Get |
-http://localhost:8080/api/appointments/46/
-```
-{
-	"appointment": {
-		"id": 46,
-		"vin": "SDKGDJGNE309",
-		"customer": "Daniel K",
-		"date_time": "2023-07-28T17:50:00+00:00",
-		"reason": "Tire Change",
-		"status": "created",
-		"technician": {
-			"id": 22,
-			"first_name": "Elite",
-			"last_name": "Care",
-			"employee_id": "AJDSDJOSJ"
-		},
-		"vip": false
-	}
-}
-```
-
-***Delete Specific  Appointments | Delete |***
-
-http://localhost:8080/api/appointments/43/
-```
-{
-	"message": "Successfully Deleted"
-}
-```
-
-***Update Appointments to Cancel | PUT |***
-http://localhost:8080/api/appointments/1/cancel/
-```
-{
-	"message": "Appointment Canceled"
-}
-
-```
-***| Update Appointments to Finish | PUT |***
-
-
-http://localhost:8080/api/appointments/3/finish/
-```
-{
-	"message": "Appointment Finished"
-}
-
-```
-# | Action | Method | URL | Automobile
-| ----------- | ----------- | ----------- |
-| Create  | POST |
-
-
-***Create AutomobileVO | POST |***
-http://localhost:8080/api/automobiles/
-
-```
-{
-	"vin": "OAIDFOI22SHN",
-	"sold": "True"
-
-}
-```
-**Response**
-```
-{
-	"Automobile": {
-		"id": 15,
-		"vin": "OAIDFOI22SHN",
-		"sold": "True"
-	}
-}
-```
-
-***List AutomobileVO  | PUT |***
-http://localhost:8080/api/automobiles/
-
-```
-	{
-			"id": 12,
-			"vin": "SDKJ238NSDHF",
-			"sold": true
-		},
-		{
-			"id": 4,
-			"vin": "1C3CC5FB2AN120174",
-			"sold": false
-		},
-		{
-			"id": 5,
-			"vin": "ADJHF3872987DBD",
-			"sold": false
-		},
-
-```
-******Git Best Practice Steps*********
-1. git checkout -b my-branch
-    A. Write Codes
-    B. Execute git
-       - git add .
-       - git commit -m "useful message"
-       - git push
-
-2. git checkout main
-    - git pull
-    - git merge branchName
-    - git push
-
-3. git checkout my-branch
 
 
 ## Sales microservice ##
@@ -800,3 +534,273 @@ Returns:
 	"sold": false
 }
 ```
+
+
+## Service microservice
+
+Service Microservice handles appointment services for automobiles. The back end consists  Technician - AutomobileVO - Appointment, which we defined in our models.
+
+ - Technician: this model manages the person in charge providing a service to the reserved automobile that assigned. The form enables to create first and last name and employee id.
+
+ - AutomobileVO keeps track sold or unsold cars and enable to identify customers as VIP or not based on the automobile vin number.
+
+ - Appointment: creates appointment in-order to  service automobile, the form takes vin#, customer name, reason, technician option selection.
+
+**INSOMNIA TEST**
+  - Technician -  create(POST), list(GET), show(GET) and delete(DELETE).
+  - Appointment - create(POST), list(GET) , show(GET), update/cancel(PUT), update/finish(PUT), delete(DELETE)
+  - AutomobileVO - Create(POST) , list(GET)
+
+# | Action | Method | URL
+| ----------- | ----------- | ----------- |
+| Create  Technician | POST |
+
+http://localhost:8080/api/technicians/
+```
+
+{
+	"first_name": "Michael",
+	"last_name": "James",
+	"employee_id": "AJH39S20AK"
+}
+```
+
+
+**RESPONSE**
+```
+{
+	"technician": {
+		"id": 27,
+		"first_name": "Michael",
+		"last_name": "James",
+		"employee_id": "AJH39S20AK"
+	}
+}
+```
+***| List of Technician | Get |***
+
+- http://localhost:8080/api/technicians/
+```
+"technician": [
+
+{
+			"id": 12,
+			"first_name": "Tweek ",
+			"last_name": " Taki",
+			"employee_id": "DKS23DJ52"
+		},
+		{
+			"id": 13,
+			"first_name": "Helen ",
+			"last_name": " Keler",
+			"employee_id": "DJHSH282KS"
+		},
+
+    ]
+}
+```
+***| Get Specific  Technician | Get |***
+
+http://localhost:8080/api/technicians/23/
+```
+{
+	"technician": {
+		"id": 23,
+		"first_name": "SAM",
+		"last_name": "TES",
+		"employee_id": "KLNSD29FDJ"
+	}
+}
+```
+***| Delete Specific  Technician | Delete |***
+
+http://localhost:8080/api/technicians/3/
+
+```
+{
+	"message": "Successfully Deleted"
+}
+```
+
+# | Action | Method | URL
+| ----------- | ----------- | ----------- |
+| Create  Appointment | POST |
+```
+{
+  "date_time": "2023-07-31T13:45:09",
+  "reason": "Battery Change",
+	"vin": "OAIDFOI22SHN",
+  "customer": "Samuel Vapper",
+	"technician": 27,
+	"vip": 15
+}
+```
+**Response**
+```
+{
+	"appointments": {
+		"id": 60,
+		"vin": "OAIDFOI22SHN",
+		"customer": "Samuel Vapper",
+		"date_time": "2023-07-31T13:45:09",
+		"reason": "Battery Change",
+		"status": "created",
+		"technician": {
+			"id": 27,
+			"first_name": "Michael",
+			"last_name": "James",
+			"employee_id": "AJH39S20AK"
+		},
+		"vip": true
+	}
+}
+```
+
+***Get List  Appointments | Get |***
+
+http://localhost:8080/api/appointments/
+```
+{
+	"appointments": [
+		{
+			"id": 38,
+			"vin": "24S3048FDG",
+			"customer": "David Vilo",
+			"date_time": "2023-07-28T00:00:00+00:00",
+			"reason": "Tire Change",
+			"technician": {
+				"id": 15,
+				"first_name": "VIP",
+				"last_name": " ONE",
+				"employee_id": "DFHJSKJHDF"
+			},
+			"vip": false
+		},
+		{
+			"id": 39,
+			"vin": "DIOJDOSJ9282",
+			"customer": "Sami Dave",
+			"date_time": "2023-07-29T00:00:00+00:00",
+			"reason": "Tire Change",
+			"technician": {
+				"id": 12,
+				"first_name": "Tweek ",
+				"last_name": " Taki",
+				"employee_id": "DKS23DJ52"
+			},
+			"vip": false
+		},
+
+```
+| Get Specific  Appointments | Get |
+http://localhost:8080/api/appointments/46/
+```
+{
+	"appointment": {
+		"id": 46,
+		"vin": "SDKGDJGNE309",
+		"customer": "Daniel K",
+		"date_time": "2023-07-28T17:50:00+00:00",
+		"reason": "Tire Change",
+		"status": "created",
+		"technician": {
+			"id": 22,
+			"first_name": "Elite",
+			"last_name": "Care",
+			"employee_id": "AJDSDJOSJ"
+		},
+		"vip": false
+	}
+}
+```
+
+***Delete Specific  Appointments | Delete |***
+
+http://localhost:8080/api/appointments/43/
+```
+{
+	"message": "Successfully Deleted"
+}
+```
+
+***Update Appointments to Cancel | PUT |***
+http://localhost:8080/api/appointments/1/cancel/
+```
+{
+	"message": "Appointment Canceled"
+}
+
+```
+***| Update Appointments to Finish | PUT |***
+
+
+http://localhost:8080/api/appointments/3/finish/
+```
+{
+	"message": "Appointment Finished"
+}
+
+```
+# | Action | Method | URL | Automobile
+| ----------- | ----------- | ----------- |
+| Create  | POST |
+
+
+***Create AutomobileVO | POST |***
+http://localhost:8080/api/automobiles/
+
+```
+{
+	"vin": "OAIDFOI22SHN",
+	"sold": "True"
+
+}
+```
+**Response**
+```
+{
+	"Automobile": {
+		"id": 15,
+		"vin": "OAIDFOI22SHN",
+		"sold": "True"
+	}
+}
+```
+
+***List AutomobileVO  | PUT |***
+http://localhost:8080/api/automobiles/
+
+```
+	{
+			"id": 12,
+			"vin": "SDKJ238NSDHF",
+			"sold": true
+		},
+		{
+			"id": 4,
+			"vin": "1C3CC5FB2AN120174",
+			"sold": false
+		},
+		{
+			"id": 5,
+			"vin": "ADJHF3872987DBD",
+			"sold": false
+		},
+
+```
+******Git Best Practice Steps*********
+1. git checkout -b my-branch
+    A. Write Codes
+    B. Execute git
+       - git add .
+       - git commit -m "useful message"
+       - git push
+
+2. git checkout main
+    - git pull
+    - git merge branchName
+    - git push
+
+3. git checkout my-branch
+
+
