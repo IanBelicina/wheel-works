@@ -1,11 +1,11 @@
-# CarCar
+# WheelWorks
 
 An application to help automobile dealerships track their sales, service appointments, and inventory.
 
 Team:
 
-* Munti Kehase - service microservice?
-* Ian Belicina - Sales microservice!!!
+* Munti Kehase - Service microservice
+* Ian Belicina - Sales microservice
 
 
 ## How to Run this App
