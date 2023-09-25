@@ -32,7 +32,7 @@ Team:
 
 ## Design
 
-CarCar has three moicroservices that interact each have their front and back end built.
+ has three moicroservices that interact each have their front and back end built.
 
 - Inventory microservice
 - Sales microservice
